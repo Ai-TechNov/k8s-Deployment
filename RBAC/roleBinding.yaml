@@ -1,11 +1,9 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  creationTimestamp: "2022-07-06T09:13:12Z"
   name: john-finance-rolebinding
   namespace: finance
   resourceVersion: "8817"
-  uid: a1a70174-b9d8-482c-a930-a0c31d3ab00f
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
