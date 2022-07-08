@@ -1,11 +1,9 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  creationTimestamp: "2022-07-06T09:11:23Z"
   name: john-finance
   namespace: finance
   resourceVersion: "8986"
-  uid: 13146255-075d-48c7-9cbd-308d66d2facf
 rules:
 - apiGroups:
   - '*'
