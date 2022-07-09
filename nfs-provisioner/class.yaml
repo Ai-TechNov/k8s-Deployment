@@ -4,4 +4,4 @@ metadata:
   name: nfs-client
 provisioner: k8s-sigs.io/nfs-subdir-external-provisioner
 parameters:
-  archiveOnDelete: "false"
+  archiveOnDelete: "true"
