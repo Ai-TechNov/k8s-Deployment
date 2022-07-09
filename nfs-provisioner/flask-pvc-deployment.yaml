@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaskapi-deployment
+  labels:
+    app: flaskapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flaskapi
+  template:
+    metadata:
+      labels:
+        app: flaskapi
+    spec:
+      containers:
+        - name: flaskapi
+          image: phanindravedula/demoapp:v3
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+          - name: logs
+            mountPath: /var/log/
+          env:
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: flask-secrets
+                  key: PASSWORD
+            - name: VARIABLE_MSG
+              valueFrom:
+                configMapKeyRef:
+                  name: message-configmap
+                  key: VARIABLE_MSG
+      volumes:
+        - name: logs
+          persistentVolumeClaim:
+                 claimName: pvc-nfs-pv1
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: flaskapi
