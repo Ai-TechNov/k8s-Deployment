@@ -26,7 +26,7 @@ spec:
                 - worker-node-1
       containers:
         - name: flaskapi
-          image: phanindravedula/demoapp:v2
+          image: akiranreddy/demoapp:v2
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
