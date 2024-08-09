@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: flaskapi
-          image: phanindravedula/demoapp:v1
+          image: akiranreddy/demoapp:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
